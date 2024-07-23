@@ -1,9 +1,10 @@
 import axios from "axios";
 import { authService } from "../services/auth.service";
 
-const baseURL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+export const baseURL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL,
   headers: {
     "Content-Type": "application/json",

@@ -69,7 +69,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
-import { authService } from "../services/auth.service";
+import { api } from "../api/axios";
 
 const router = useRouter();
 const name = ref("");
@@ -91,13 +91,8 @@ const isFormValid = computed(() => {
 
 const handleSignUp = () => {
   if (isFormValid.value) {
-    authService.setUser({
-      name: name.value,
-      email: email.value,
-      isVerified: false,
-      number: phoneNumber.value,
-    });
-    router.push("/verify");
+    api.signup(name.value, email.value, password.value);
+    router.push("/");
   }
 };
 </script>

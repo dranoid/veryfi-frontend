@@ -52,7 +52,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
-import { authService } from "../services/auth.service";
+import { api } from "../api/axios";
 
 const router = useRouter();
 const email = ref("");
@@ -63,11 +63,12 @@ const isFormValid = computed(() => {
   return emailRegex.test(email.value) && password.value.length > 0;
 });
 
-const handleLogin = () => {
+const handleLogin = async () => {
   if (isFormValid.value) {
     // Simulate login
-    authService.setUser({ email: email.value, isVerified: false, name: "" });
-    router.push("/verify");
+
+    await api.login(email.value, password.value);
+    router.push("/");
   }
 };
 </script>

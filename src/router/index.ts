@@ -24,12 +24,12 @@ const router = createRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.path === "/" && !authService.isLoggedIn()) {
-//     next("/login");
-//   } else {
-//     next();
-//   }
-// });
+router.beforeEach((to, _from, next) => {
+  if (to.path === "/" && !authService.isLoggedIn()) {
+    next("/login");
+  } else {
+    next();
+  }
+});
 
 export default router;
