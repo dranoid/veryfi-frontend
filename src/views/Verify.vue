@@ -171,7 +171,7 @@ const userVerified = ref(false);
 const ownPhoneNumber = ref("");
 const otherPhoneNumber = ref("");
 const ownVerificationMethod = ref("");
-const otherVerificationMethod = ref("");
+// const otherVerificationMethod = ref("");
 
 // New reactive variables
 const ownVerificationResponse = ref(null);
@@ -181,7 +181,7 @@ const otherPairedNumber = ref("");
 const ownOtpCode = ref("");
 const otherOtpCode = ref("");
 const isOwnVerifying = ref(false);
-const isOtherVerifying = ref(false);
+// const isOtherVerifying = ref(false);
 
 onMounted(() => {
   userVerified.value = authService.isVerified();
@@ -218,12 +218,12 @@ const isOwnVerificationValid = computed(
   () => ownPhoneNumber.value.trim() !== "" && ownVerificationMethod.value !== ""
 );
 
-const isOtherVerificationValid = computed(
-  () =>
-    userVerified.value &&
-    otherPhoneNumber.value.trim() !== "" &&
-    otherVerificationMethod.value !== ""
-);
+// const isOtherVerificationValid = computed(
+//   () =>
+//     userVerified.value &&
+//     otherPhoneNumber.value.trim() !== "" &&
+//     otherVerificationMethod.value !== ""
+// );
 
 const ownVerificationStatus = ref("");
 
@@ -251,27 +251,27 @@ const verifyOwnNumber = async () => {
 
 const otherVerificationStatus = ref("");
 
-const verifyOtherNumber = async () => {
-  if (isOtherVerificationValid.value && !isOtherVerifying.value) {
-    isOtherVerifying.value = true;
-    try {
-      const response = await api.verifyOthers(
-        "+234",
-        otherPhoneNumber.value,
-        otherVerificationMethod.value
-      );
+// const verifyOtherNumber = async () => {
+//   if (isOtherVerificationValid.value && !isOtherVerifying.value) {
+//     isOtherVerifying.value = true;
+//     try {
+//       const response = await api.verifyOthers(
+//         "+234",
+//         otherPhoneNumber.value,
+//         otherVerificationMethod.value
+//       );
 
-      otherVerificationResponse.value = response;
-      otherPairedNumber.value = response.data.pairedNumber;
-      otherOtpCode.value = response.data.otp;
-      otherVerificationStatus.value = response.data.status;
-    } catch (error) {
-      console.error("Other number verification failed:", error);
-    } finally {
-      isOtherVerifying.value = false;
-    }
-  }
-};
+//       otherVerificationResponse.value = response;
+//       otherPairedNumber.value = response.data.pairedNumber;
+//       otherOtpCode.value = response.data.otp;
+//       otherVerificationStatus.value = response.data.status;
+//     } catch (error) {
+//       console.error("Other number verification failed:", error);
+//     } finally {
+//       isOtherVerifying.value = false;
+//     }
+//   }
+// };
 
 watch(userVerified, (newValue) => {
   if (newValue) {
