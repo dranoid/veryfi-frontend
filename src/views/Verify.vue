@@ -77,7 +77,7 @@
       </div>
 
       <!-- Verify Other Numbers Section -->
-      <div class="bg-white shadow-md rounded-lg p-6">
+      <!-- <div class="bg-white shadow-md rounded-lg p-6">
         <h3 class="text-center text-xl font-bold text-gray-900 mb-4">
           Verify Other Numbers
         </h3>
@@ -130,7 +130,6 @@
           Please enter the other phone number and select a verification method.
         </p>
 
-        <!-- Other Verification Instructions -->
         <div v-if="otherVerificationResponse" class="mt-4 space-y-2">
           <h4 class="font-bold text-lg">
             Other Number Verification Instructions
@@ -152,7 +151,7 @@
             <p>To {{ otherPairedNumber }}.</p>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

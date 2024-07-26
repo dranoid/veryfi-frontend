@@ -12,18 +12,18 @@ export const axiosInstance = axios.create({
 });
 
 // Interceptor to add token to headers if available
-axiosInstance.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem("auth-token");
-    if (token) {
-      config.headers["Authorization"] = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+// axiosInstance.interceptors.request.use(
+//   (config) => {
+//     const token = localStorage.getItem("auth-token");
+//     if (token) {
+//       config.headers["Authorization"] = `Bearer ${token}`;
+//     }
+//     return config;
+//   },
+//   (error) => {
+//     return Promise.reject(error);
+//   }
+// );
 
 // Methods for API requests
 export const api = {
